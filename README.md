@@ -97,7 +97,7 @@ Ensure that your plots are well-labeled and easy to interpret. <br>
 ### Top 10 Songs by Total Streams
 
 ![Screen Shot 2024-11-06 at 2 36 04 PM](https://github.com/user-attachments/assets/07d645fb-ad43-4091-9846-ffb26700f58d)
-> Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum
+> <p align="justify"> This bar chart shows the "Top 10 Songs by Total Streams," ranking popular songs based on their streaming counts. Each bar represents a song title, with "Blinding Lights" leading as the most-streamed track, followed by "Shape of You." The length of each bar corresponds to the total stream count, measured along the x-axis in billions. Color gradients distinguish each song, with cooler tones for higher-ranked songs and warmer tones for lower-ranked ones, indicating slight visual separation by popularity. </p>
 ##### Syntax: 
 ```ruby
 # Top 10 songs by streams 
@@ -118,7 +118,7 @@ plt.show()
 ### Top 10 Artists by Total Streams
 
 ![Screen Shot 2024-11-06 at 2 39 16 PM](https://github.com/user-attachments/assets/da03db3d-7261-45cb-bd7e-ab1fe906f650)
-> Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum
+> <p align="justify"> The graph displays the total streams for the top 10 artists, ranked in descending order. The artists are listed along the x-axis, and their respective total streams are represented by the height of the bars on the y-axis. The bars are color-coded, with a gradient from blue to red, likely indicating a ranking or classification of the artists. </p>
 ##### Syntax: 
 ```ruby
 # Top 10 songs by streams 
@@ -144,7 +144,7 @@ Explore relationships between streams and other musical characteristics like tem
 ### Correlation Matrix between all Variables
 
 ![Screen Shot 2024-11-06 at 2 44 31 PM](https://github.com/user-attachments/assets/7c8f3713-231e-4211-9035-386ede745c1e)
-> Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum
+> <p align="justify"> The correlation matrix reveals the relationships between various music attributes. Strong positive correlations exist between streaming numbers and playlist/chart presence. Conversely, release month negatively impacts streaming success. Danceability and valence exhibit a strong positive correlation, while energy and acousticness show a strong negative relationship. These findings provide insights into the factors influencing music popularity.</p>
 ##### Syntax: 
 ```ruby
 # Select following datatypes to include in matrix
@@ -211,7 +211,7 @@ print("Standard Deviation of Streams: ", sp['streams'].std())
 ### Distribution of Released Years and Artist Counts
 
 ![Screen Shot 2024-11-06 at 4 03 55 PM](https://github.com/user-attachments/assets/671c711f-0242-4856-aa85-515c197fc50c)
-> Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum
+> <p align="justify"> The violin plots visualize the distribution of released years and artist counts in the dataset. The left plot shows that most songs were released between 1990 and 2020, with a peak around 2000. The right plot indicates that most songs were released by a single artist, with a few having multiple artists. </p>
 
 ##### Syntax: 
 ```ruby
@@ -245,7 +245,7 @@ b.) Who are the top 5 most frequent artists based on the number of tracks in the
 ### Top 5 Most Streamed Tracks
 
 ![Screen Shot 2024-11-06 at 4 16 15 PM](https://github.com/user-attachments/assets/3611c649-a9c7-4221-82dc-6d7e5ebf9f90)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The bar chart shows the top 5 songs by total streams. "Blinding Lights" has the highest number of streams, followed by "Shape of You" and "Sunflower - Spider-Man: Into the Spider-Verse". The remaining two songs in the top 5 are "Someone You Loved" and "Dance Monkey". </p>
 
 ##### Syntax: 
 ```ruby
@@ -266,7 +266,7 @@ plt.show()
 ### Top 5 Most Frequent Artists
 
 ![Screen Shot 2024-11-06 at 4 18 20 PM](https://github.com/user-attachments/assets/3b7c3ef2-0472-4497-9595-7b98615331b7)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The bar chart shows the top 5 artists with the highest frequency of tracks in the dataset. Taylor Swift has the highest number of tracks, followed by The Weeknd, SZA, Bad Bunny, and Harry Styles. </p>
 
 ##### Syntax: 
 ```ruby
@@ -297,7 +297,8 @@ b.) Does the number of tracks released per month follow any noticeable patterns?
 ### The Number of Tracks Released Per Year
 
 ![Screen Shot 2024-11-06 at 4 24 50 PM](https://github.com/user-attachments/assets/a12535d9-ec60-4f6a-982c-53efb1b5dafa)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The line chart shows the number of tracks released per year. There is a clear upward trend, with the number of tracks released increasing significantly over time. The most recent years, 2021 and 2022, show a particularly sharp increase in the number of tracks released. </p>
+
 
 ##### Syntax: 
 ```ruby
@@ -320,7 +321,7 @@ plt.show()
 ### The Number of Tracks Released Per Month
 
 ![Screen Shot 2024-11-06 at 4 27 02 PM](https://github.com/user-attachments/assets/921f369f-af50-4053-b2f6-9f92a735f95a)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The line chart shows the number of tracks released per month. The number of tracks released varies across the months, with peaks in months 2, 5, and 11. </p>
 
 ##### Syntax: 
 ```ruby
@@ -346,7 +347,7 @@ b.) Is there a correlation between danceability_% and energy_%? How about valenc
 ### Correlation between Streams and Musical Attributes
 
 ![Screen Shot 2024-11-06 at 4 42 51 PM](https://github.com/user-attachments/assets/3fa23f63-10dc-4cca-acfb-eff9d17a2fd8)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The correlation matrix reveals weak relationships between streams and audio features. While danceability and energy are positively correlated, they show minimal impact on streaming popularity. This suggests that other factors beyond these audio characteristics influence a song's success </p>
 
 ##### Syntax: 
 ```ruby
@@ -367,8 +368,7 @@ plt.show()
 ### Correlation between Danceability (%) and Energy (%)
 
 ![Screen Shot 2024-11-06 at 4 49 03 PM](https://github.com/user-attachments/assets/742f6148-aa4d-4014-a7b7-333753789592)
-
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The scatter plot shows the relationship between danceability and energy levels of songs. There is a positive correlation between the two, indicating that songs with higher danceability tend to have higher energy levels. However, the relationship is not perfect, as there is a wide scatter of points, suggesting that danceability and energy are not the only factors determining a song's overall energy level. </p>
 
 ##### Syntax: 
 ```ruby
@@ -384,7 +384,7 @@ plt.show()
 ### Correlation between Valence (%) and Acousticness (%)
 
 ![Screen Shot 2024-11-06 at 4 49 45 PM](https://github.com/user-attachments/assets/c6109238-630f-4d2f-88a2-3817f3438fd3)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The scatter plot shows the relationship between valence and acousticness of songs. There is a negative correlation between the two, indicating that songs with higher valence tend to have lower acousticness, and vice versa. However, there is a wide scatter of points, suggesting that valence and acousticness are not the only factors determining a song's overall sound. </p>
 
 ##### Syntax: 
 ```ruby
@@ -403,7 +403,7 @@ plt.show()
 ### Proportion of Total Tracks in Playlist
 
 ![Screen Shot 2024-11-06 at 4 55 10 PM](https://github.com/user-attachments/assets/6f70dbcc-2cd2-43f4-af3d-79413dac7086)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The pie chart shows the proportion of total tracks in each platform's playlists. Spotify dominates with 96.9% of the tracks, followed by Deezer with 1.9%, and Apple Music with 1.3%. This indicates that Spotify has a significantly larger share of the music streaming market in terms of playlist content. </p>
 
 ##### Syntax: 
 ```ruby
@@ -452,7 +452,9 @@ print(track_counts)
 ### Playlist Appearances of Top 5 Songs
 
 ![Screen Shot 2024-11-06 at 5 00 13 PM](https://github.com/user-attachments/assets/07b43f5c-352f-43ef-8366-0bf503cdc379)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> This bar chart displays the playlist appearances of the top 5 songs on Spotify, Apple Music, and Deezer. Each song has a bar showing its distribution across these platforms, with the x-axis representing the number of appearances. “Blinding Lights” has the highest appearances, especially on Spotify (blue). “Shape of You” and “Dance Monkey” also have high numbers but fall behind “Blinding Lights.” “Someone You Loved” and “Sunflower” appear less frequently, with Deezer (red) showing minimal appearances across all songs. This chart highlights each song’s popularity across the platforms in terms of playlist frequency. </p>
+
+
 
 ##### Syntax: 
 ```ruby
@@ -492,7 +494,8 @@ plt.show()
 ### Proportion of Total Tracks in Charts
 
 ![Screen Shot 2024-11-06 at 5 03 28 PM](https://github.com/user-attachments/assets/7d816378-16b8-474b-88e7-968d8dcc7007)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The pie chart reveals that Apple Music dominates the music streaming market, accounting for 78% of the total tracks in charts. Spotify follows with 18%, and Deezer holds the smallest share at 4%. This data suggests that Apple Music has a significant advantage in terms of chart content. </p>
+
 
 ##### Syntax: 
 ```ruby
@@ -540,8 +543,9 @@ print(track_counts_charts)
 ```
 ### Chart Appearances of Top 5 Songs
 
-![Screen Shot 2024-11-06 at 5 00 13 PM](https://github.com/user-attachments/assets/07b43f5c-352f-43ef-8366-0bf503cdc379)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+![image](https://github.com/user-attachments/assets/67795f6c-fb18-4db3-8ac9-34b573205b01)
+> <p align="justify"> The bar chart shows the number of times the top 5 songs appeared on different music streaming platforms' charts. "Blinding Lights" had the most appearances, predominantly on Spotify charts. "Sunflower" had the most appearances on Apple Music charts. Deezer charts were less represented. </p>
+
 
 ##### Syntax: 
 ```ruby
@@ -586,7 +590,7 @@ b.) Do certain genres or artists consistently appear in more playlists or charts
 ### Proportion of Total Streams: Major vs. Minor
 
 ![Screen Shot 2024-11-06 at 5 37 35 PM](https://github.com/user-attachments/assets/3c1ad64a-8c4b-497f-8d93-c9b280c709c0)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The pie chart illustrates the proportion of total streams for songs in major and minor keys. Major key songs dominate with 58.4% of the total streams, while minor key songs account for 41.6%. This indicates a preference for major key songs in music streaming. </p>
 
 ##### Syntax: 
 ```ruby
@@ -621,7 +625,7 @@ plt.show()
 ### Total Streams Per Key
 
 ![image](https://github.com/user-attachments/assets/18995d66-14ce-44d8-b6c7-3d5984ef2d5b)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> The bar chart shows the total number of streams for songs in different keys. The key of C# has the highest number of streams, followed by nan, G, and G#. The key of D# has the lowest number of streams. </p>
 
 ##### Syntax: 
 ```ruby
@@ -646,10 +650,10 @@ plt.tight_layout()
 # Show the plot
 plt.show()
 ```
-### Playlist Appearances of Top 10 Songs
+### Playlist Appearances of Top 10 Artists
 
 ![image](https://github.com/user-attachments/assets/4177cb46-34d4-40eb-ab5d-560ec20b847a)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> This bar chart shows the playlist appearances of the top 10 artists on three streaming platforms: Spotify, Apple Music, and Deezer. Each artist is represented by bars segmented by platform, with the total number of appearances shown on the x-axis. Spotify generally has the highest representation across all artists, especially for artists like The Weeknd and Dr. Dre & Snoop Dogg. Apple Music and Deezer have significantly fewer appearances, indicated by smaller sections in red and brown on each bar. The chart provides a comparative view of each artist’s playlist frequency on each platform. </p>
 
 ##### Syntax: 
 ```ruby
@@ -701,10 +705,10 @@ plt.legend(title='Platforms')
 plt.tight_layout()
 plt.show()
 ```
-### Chart Appearances of Top 10 Songs
+### Chart Appearances of Top 10 Artists
 
 ![image](https://github.com/user-attachments/assets/6c6f1049-b26b-4a9d-afc7-5bd2d42ac16e)
-> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+> <p align="justify"> This bar chart shows the chart appearances of the top 10 artists on three music streaming platforms: Spotify, Apple Music, and Deezer. Each artist has a bar segmented by platform, with the x-axis representing the number of appearances. Spotify (blue) dominates in appearances for most artists, especially for Bad Bunny and Taylor Swift, who have the highest counts. Apple Music and Deezer have relatively fewer appearances, as indicated by smaller segments in gray and red on each bar. The chart highlights the distribution of each artist’s popularity across the platforms in terms of chart appearances. </p>
 
 ##### Syntax: 
 ```ruby
@@ -752,8 +756,8 @@ plt.show()
 ```
 ***
 ### References
-* M, R. (2021, January 15). What Is Pyplot In Matplotlib. ActiveState. https://www.activestate.com/resources/quick-reads/what-is-pyplot-in-matplotlib/
-* Electronics Engineering Department (September 2024). Data Wrangling and Data Visualization, PowerPoint Slides
+* Rheda, A. https://www.kaggle.com/code/ahmedredaahmedali/most-streamed-spotify-songs
+* Karni, H. https://www.kaggle.com/code/hassanelkarni/spotify-analysis
 
 ***
 ### Submitted by:
