@@ -159,7 +159,598 @@ sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title('Correlation Matrix between All Variables in Dataset')
 plt.show()
 ```
+***
+# GUIDE QUESTIONS
+### I. Overview of Data Set
+> a.) How many rows and columns does the dataset contain? <br>
+b.) What are the data types of each column? Are there any missing values? 
 
+### Rows and Columns
+
+![Screen Shot 2024-11-06 at 2 10 46 PM](https://github.com/user-attachments/assets/5e5c92f8-cb49-4c65-b8e7-239bcfa4e6c6)
+##### Syntax: 
+```ruby
+sp.shape
+```
+### Data Types of Columns
+
+![Screen Shot 2024-11-06 at 3 51 24 PM](https://github.com/user-attachments/assets/61da9e74-9f9f-43d7-a3c1-521d3c1e7fa1)
+
+##### Syntax: 
+```ruby
+sp.dtypes
+```
+
+### Missing Values
+
+![Screen Shot 2024-11-06 at 3 59 05 PM](https://github.com/user-attachments/assets/024b6b21-8ff9-4a99-a5f1-4c0849c529a9)
+
+##### Syntax: 
+```ruby
+sp.isnull().sum()
+```
+######
+> Note: <br>
+Some variables have undergone data cleaning, hence datatype and missing values are subjected to changes from initial exploration.
+
+##
+### II. Basic Descriptive Statistics
+> a.) What are the mean, median, and standard deviation of the streams column? <br>
+b.) What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers?
+
+### Mean, Median, and Standard Deviation
+
+![Screen Shot 2024-11-06 at 4 00 18 PM](https://github.com/user-attachments/assets/3c78a7ee-00a4-463d-ae14-2c69d931f62d)
+##### Syntax: 
+```ruby
+print("Mean of Streams: ", sp['streams'].mean())
+print("Median of Streams: ", sp['streams'].median())
+print("Standard Deviation of Streams: ", sp['streams'].std())
+```
+
+### Distribution of Released Years and Artist Counts
+
+![Screen Shot 2024-11-06 at 4 03 55 PM](https://github.com/user-attachments/assets/671c711f-0242-4856-aa85-515c197fc50c)
+> Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum  Lorem et ipsum
+
+##### Syntax: 
+```ruby
+# Set up the figure
+plt.figure(figsize=(12, 5))
+
+# Violin plot for released_year
+plt.subplot(1, 2, 1)
+sns.violinplot(x=sp['released_year'], inner='quartile', color='#659cfb')
+plt.title('Violin Plot of Released Year')
+plt.xlabel('Released Year')
+plt.ylabel('Frequency')
+
+# Violin plot for artist_count
+plt.subplot(1, 2, 2)
+sns.violinplot(x=sp['artist_count'], inner='quartile', color='#fb623a')
+plt.title('Violin Plot of Artist Count')
+plt.xlabel('Artist Count')
+plt.ylabel('Frequency')
+
+# Show the plots
+plt.tight_layout()
+plt.show()
+```
+
+##
+### III. Top Performers
+> a.) Which track has the highest number of streams? Display the top 5 most streamed tracks. <br>
+b.) Who are the top 5 most frequent artists based on the number of tracks in the dataset?
+
+### Top 5 Most Streamed Tracks
+
+![Screen Shot 2024-11-06 at 4 16 15 PM](https://github.com/user-attachments/assets/3611c649-a9c7-4221-82dc-6d7e5ebf9f90)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Top 5 songs by streams 
+top_5_songs = sp.filter(items = ['track_name','streams'], axis = 1)
+# Sorting the values by stream in decsending order
+top_5_songs = top_5_songs.sort_values(by = 'streams',ascending = False).head(5)
+
+#Cuztomizing plot
+plt.figure(figsize=(12, 6))
+sns.barplot(x='streams', y='track_name', data=top_5_songs, palette='coolwarm')
+plt.title('Top 5 Songs by Total Streams')
+plt.xlabel('Total Streams')
+plt.ylabel('Song Title')
+plt.tight_layout(pad=1.0)
+plt.show()
+```
+### Top 5 Most Frequent Artists
+
+![Screen Shot 2024-11-06 at 4 18 20 PM](https://github.com/user-attachments/assets/3b7c3ef2-0472-4497-9595-7b98615331b7)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Top 5 artist by frequency of streams
+top_5_artists_tracks = sp.filter(items=['artist(s)_name'], axis=1)
+
+# Group by artist and count the number of tracks
+top_5_artists_tracks = top_5_artists_tracks.groupby(['artist(s)_name']).size().reset_index(name='track_count')
+
+# Sort by track count and select the top 5
+top_5_artists_tracks = top_5_artists_tracks.sort_values(by='track_count', ascending=False).head(5)
+
+# Plotting the results
+plt.figure(figsize=(12, 6))
+sns.barplot(y='track_count', x='artist(s)_name', data=top_5_artists_tracks, palette='coolwarm')
+plt.title('Top 5 Artists by Frequency of Tracks')
+plt.ylabel('Number of Tracks')
+plt.xlabel('Artist Name')
+plt.tight_layout(pad=1.0)
+plt.show()
+```
+
+##
+### IV. Temporal Trends
+> a.) Analyze the trends in the number of tracks released over time. Plot the number of tracks released per year. <br>
+b.) Does the number of tracks released per month follow any noticeable patterns? Which month sees the most releases?
+
+### The Number of Tracks Released Per Year
+
+![Screen Shot 2024-11-06 at 4 24 50 PM](https://github.com/user-attachments/assets/a12535d9-ec60-4f6a-982c-53efb1b5dafa)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Count the number of tracks released per year using the existing 'released_year' column
+tracks_per_year = sp.groupby('released_year').size().reset_index(name='track_count')
+
+# Customizing Plot
+plt.figure(figsize=(12, 6))
+plt.plot(tracks_per_year['released_year'], tracks_per_year['track_count'], marker='o', color='#659cfb')
+plt.title('Number of Tracks Released Per Year')
+plt.xlabel('Year')
+plt.ylabel('Number of Tracks')
+
+# Set x-ticks to show every 2 years
+plt.xticks(tracks_per_year['released_year'][::2], rotation=45, ha='right') 
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
+### The Number of Tracks Released Per Month
+
+![Screen Shot 2024-11-06 at 4 27 02 PM](https://github.com/user-attachments/assets/921f369f-af50-4053-b2f6-9f92a735f95a)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Count the number of tracks released per year using the existing 'released_year' column
+tracks_per_month = sp.groupby('released_month').size().reset_index(name='track_count')
+
+# Plot line graph
+plt.figure(figsize=(12, 6))
+plt.plot(tracks_per_month['released_month'], tracks_per_month['track_count'], marker='o', color='#fb623a')
+plt.title('Number of Tracks Released Per Month')
+plt.xlabel('Year')
+plt.ylabel('Number of Tracks')
+plt.xticks(tracks_per_month['released_month'])  
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
+##
+### V. Genre and Music Characteristics
+> a.) Examine the correlation between streams and musical attributes like bpm, danceability_%, and energy_%. Which attributes seem to influence streams the most? <br>
+b.) Is there a correlation between danceability_% and energy_%? How about valence_% and acousticness_%?
+
+### Correlation between Streams and Musical Attributes
+
+![Screen Shot 2024-11-06 at 4 42 51 PM](https://github.com/user-attachments/assets/3fa23f63-10dc-4cca-acfb-eff9d17a2fd8)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+#Group relevant variables into one
+attributes = ['streams', 'bpm', 'danceability_%', 'energy_%']
+streams_vs_attributes = sp[attributes]
+
+# Calculate the correlation matrix
+correlation_matrix_2 = streams_vs_attributes.corr()
+
+# Plot the correlation matrix using Seaborn
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix_2, annot=True, cmap='coolwarm', fmt=".2f")
+plt.title('Correlation Matrix')
+plt.show()
+```
+
+### Correlation between Danceability (%) and Energy (%)
+
+![Screen Shot 2024-11-06 at 4 49 03 PM](https://github.com/user-attachments/assets/742f6148-aa4d-4014-a7b7-333753789592)
+
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Plot the correlation matrix using Seaborn
+plt.scatter(sp['danceability_%'], sp['energy_%'], color='#659cfb' , alpha=0.5, edgecolors='w', s=80)
+plt.title('Scatter Plot between Danceability (%) and Energy (%)')
+plt.xlabel('Danceability_%')
+plt.ylabel('Energy_%')
+plt.grid(True)
+plt.show()
+```
+
+### Correlation between Valence (%) and Acousticness (%)
+
+![Screen Shot 2024-11-06 at 4 49 45 PM](https://github.com/user-attachments/assets/c6109238-630f-4d2f-88a2-3817f3438fd3)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Plot the correlation matrix using Seaborn
+plt.scatter(sp['valence_%'], sp['acousticness_%'], color='#fb623a' , alpha=0.5, edgecolors='w', s=80)
+plt.title('Scatter Plot between Valence (%) and Acousticness (%)')
+plt.xlabel('Valence_%')
+plt.ylabel('Acousticness_%')
+plt.grid(True)
+plt.show()
+```
+##
+### VI. Platform Popularity
+> a.) How do the numbers of tracks in spotify_playlists, spotify_charts, and apple_playlists compare? Which platform seems to favor the most popular tracks?
+
+### Proportion of Total Tracks in Playlist
+
+![Screen Shot 2024-11-06 at 4 55 10 PM](https://github.com/user-attachments/assets/6f70dbcc-2cd2-43f4-af3d-79413dac7086)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+#Renaming columns for clarity
+sp.rename(columns={
+    'in_spotify_playlists': 'Spotify',
+    'in_apple_playlists': 'Apple Music',
+    'in_deezer_playlists': 'Deezer'
+}, inplace=True)
+
+# Define the new columns for the platforms
+platforms = ['Spotify', 'Apple Music', 'Deezer']
+
+# Convert the specified columns to numeric, with non-numeric values converted to NaN and filled with 0
+sp[platforms] = sp[platforms].apply(pd.to_numeric, errors='coerce').fillna(0)
+
+# Count the number of tracks in each platform's playlists
+track_counts = sp[platforms].sum()
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Calculate percentages
+percentages = (track_counts / track_counts.sum()) * 100
+percentage_labels = [f'{label}: {value:.1f}%' for label, value in zip(track_counts.index, percentages)]
+
+# Create a pie chart with a legend
+plt.figure(figsize=(8, 5))
+colors = sns.color_palette("coolwarm", len(track_counts))  # Get coolwarm colors from Seaborn
+
+# Plotting the pie chart without percentages
+plt.pie(track_counts, labels=None, startangle=140, colors=colors)  # No labels on the pie chart
+
+# Title for the pie chart
+plt.title("Proportion of Total Tracks in Each Platform's Playlists")
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is a circle.
+
+# Create a legend with percentages
+plt.legend(percentage_labels, title="Platforms", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+
+plt.tight_layout()  # Adjust layout for better spacing
+plt.show()
+
+print(track_counts)
+```
+### Playlist Appearances of Top 5 Songs
+
+![Screen Shot 2024-11-06 at 5 00 13 PM](https://github.com/user-attachments/assets/07b43f5c-352f-43ef-8366-0bf503cdc379)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Top 5 songs by streams
+top_5_songs = sp[['track_name', 'streams']].sort_values(by='streams', ascending=False).head(5)
+
+# Sum the appearances of the top 5 songs in the playlists
+top_5_song_names = top_5_songs['track_name'].tolist()
+playlist_counts = sp[sp['track_name'].isin(top_5_song_names)][platforms].sum()
+
+# Create a DataFrame for the stacked bar plot
+playlist_counts_df = pd.DataFrame(playlist_counts).reset_index()
+playlist_counts_df.columns = ['Platform', 'Appearances']
+
+# Create a new DataFrame for plotting
+top_5_appearances = sp[sp['track_name'].isin(top_5_song_names)][['track_name'] + platforms]
+top_5_appearances = top_5_appearances.groupby('track_name').sum().reset_index()
+
+# Melt the DataFrame for Seaborn compatibility
+melted = top_5_appearances.melt(id_vars='track_name', value_vars=platforms, var_name='Platform', value_name='Appearances')
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Create the horizontal stacked bar plot
+plt.figure(figsize=(10, 6))
+sns.barplot(data=melted, x='Appearances', y='track_name', hue='Platform', palette='coolwarm', orient='h')
+
+# Customize the plot
+plt.title("Playlist Appearances of Top 5 Songs")
+plt.xlabel('Number of Appearances')
+plt.ylabel('Songs')
+plt.legend(title='Platforms')
+plt.tight_layout()
+plt.show()
+```
+### Proportion of Total Tracks in Charts
+
+![Screen Shot 2024-11-06 at 5 03 28 PM](https://github.com/user-attachments/assets/7d816378-16b8-474b-88e7-968d8dcc7007)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Rename the columns for clarity regarding charts
+sp.rename(columns={
+    'in_spotify_charts': 'Spotify Charts',
+    'in_apple_charts': 'Apple Music Charts',
+    'in_deezer_charts': 'Deezer Charts'
+}, inplace=True)
+
+# Define the new columns for the charts
+charts = ['Spotify Charts', 'Apple Music Charts', 'Deezer Charts']
+
+# Convert the specified columns to numeric, with non-numeric values converted to NaN and filled with 0
+sp[charts] = sp[charts].apply(pd.to_numeric, errors='coerce').fillna(0)
+
+# Count the number of tracks in each platform's charts
+track_counts_charts = sp[charts].sum()
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Calculate percentages
+percentages_charts = (track_counts_charts / track_counts_charts.sum()) * 100
+percentage_labels_charts = [f'{label}: {value:.1f}%' for label, value in zip(track_counts_charts.index, percentages_charts)]
+
+# Create a pie chart with a legend
+plt.figure(figsize=(8, 5))
+colors_charts = sns.color_palette("coolwarm", len(track_counts_charts))  # Get coolwarm colors from Seaborn
+
+# Plotting the pie chart without percentages
+plt.pie(track_counts_charts, labels=None, startangle=140, colors=colors_charts)  # No labels on the pie chart
+
+# Title for the pie chart
+plt.title("Proportion of Total Tracks in Each Platform's Charts")
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is a circle.
+
+# Create a legend with percentages
+plt.legend(percentage_labels_charts, title="Platforms", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1))
+
+plt.tight_layout()  # Adjust layout for better spacing
+plt.show()
+
+print(track_counts_charts)
+```
+### Chart Appearances of Top 5 Songs
+
+![Screen Shot 2024-11-06 at 5 00 13 PM](https://github.com/user-attachments/assets/07b43f5c-352f-43ef-8366-0bf503cdc379)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Top 5 songs by streams
+top_5_songs = sp[['track_name', 'streams']].sort_values(by='streams', ascending=False).head(5)
+
+# Sum the appearances of the top 5 songs in the charts
+top_5_song_names = top_5_songs['track_name'].tolist()
+chart_counts = sp[sp['track_name'].isin(top_5_song_names)][charts].sum()  # Use 'charts' instead of 'platforms'
+
+# Create a DataFrame for the stacked bar plot
+chart_counts_df = pd.DataFrame(chart_counts).reset_index()
+chart_counts_df.columns = ['Chart', 'Appearances']  # Change name to 'Chart'
+
+# Create a new DataFrame for plotting
+top_5_appearances = sp[sp['track_name'].isin(top_5_song_names)][['track_name'] + charts]  # Use 'charts' instead of 'platforms'
+top_5_appearances = top_5_appearances.groupby('track_name').sum().reset_index()
+
+# Melt the DataFrame for Seaborn compatibility
+melted = top_5_appearances.melt(id_vars='track_name', value_vars=charts, var_name='Chart', value_name='Appearances')  # Use 'Chart'
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Create the horizontal stacked bar plot
+plt.figure(figsize=(10, 6))
+sns.barplot(data=melted, x='Appearances', y='track_name', hue='Chart', palette='coolwarm', orient='h')
+
+# Customize the plot
+plt.title("Chart Appearances of Top 5 Songs")
+plt.xlabel('Number of Appearances')
+plt.ylabel('Songs')
+plt.legend(title='Charts')
+plt.tight_layout()
+plt.show()
+```
+##
+### VII. Advanced Analysis
+> a.) Based on the streams data, can you identify any patterns among tracks with the same key or mode (Major vs. Minor)? <br>
+b.) Do certain genres or artists consistently appear in more playlists or charts? Perform an analysis to compare the most frequently appearing artists in playlists or charts.
+
+### Proportion of Total Streams: Major vs. Minor
+
+![Screen Shot 2024-11-06 at 5 37 35 PM](https://github.com/user-attachments/assets/3c1ad64a-8c4b-497f-8d93-c9b280c709c0)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Ensure the 'key' column is treated as strings and drop NaN values
+sp['key'] = sp['key'].astype(str).fillna('')  # Convert to string and fill NaN with empty strings
+sp = sp[sp['key'] != '']  # Drop rows where 'key' is now an empty string
+
+# Create a new column to classify keys as 'Major' or 'Minor'
+sp['key_type'] = sp['key'].apply(lambda x: 'Minor' if '#' in x else 'Major')
+
+# Total streams per key type
+total_streams_by_key_type = sp.groupby('key_type')['streams'].sum().reset_index()
+
+# Calculate percentages
+total_streams_by_key_type['percentage'] = (total_streams_by_key_type['streams'] / total_streams_by_key_type['streams'].sum()) * 100
+
+# Set up the matplotlib figure
+plt.figure(figsize=(8, 5))
+
+# Create a pie chart for major vs minor keys
+colors = sns.color_palette("coolwarm", len(total_streams_by_key_type))  # Get coolwarm colors from Seaborn
+plt.pie(total_streams_by_key_type['streams'], labels=total_streams_by_key_type['key_type'], 
+        autopct='%1.1f%%', startangle=140, colors=colors)
+
+# Title for the pie chart
+plt.title("Proportion of Total Streams: Major vs. Minor Keys")
+plt.axis('equal')  # Equal aspect ratio ensures that pie chart is a circle.
+
+plt.tight_layout()  # Adjust layout for better spacing
+plt.show()
+```
+### Total Streams Per Key
+
+![image](https://github.com/user-attachments/assets/18995d66-14ce-44d8-b6c7-3d5984ef2d5b)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Total streams per key
+total_streams = sp.groupby('key')['streams'].sum().reset_index().sort_values('streams', ascending=False)
+
+# Create a figure and axes
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Bar plot for total streams per key
+sns.barplot(data=total_streams, x='key', y='streams', ax=ax, palette='coolwarm')
+
+# Title for the plot
+ax.set_title('Total Streams per Key', fontsize=16)
+
+# Rotate x-axis labels for better readability
+plt.xticks
+
+# Adjust layout for better spacing
+plt.tight_layout()
+
+# Show the plot
+plt.show()
+```
+### Playlist Appearances of Top 10 Songs
+
+![image](https://github.com/user-attachments/assets/4177cb46-34d4-40eb-ab5d-560ec20b847a)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Rename the columns for clarity
+sp.rename(columns={
+    'in_spotify_playlists': 'Spotify',
+    'in_apple_playlists': 'Apple Music',
+    'in_deezer_playlists': 'Deezer'
+}, inplace=True)
+
+# Define the new columns for the platforms
+platforms = ['Spotify', 'Apple Music', 'Deezer']
+
+# Convert the specified columns to numeric, with non-numeric values converted to NaN and filled with 0
+sp[platforms] = sp[platforms].apply(pd.to_numeric, errors='coerce').fillna(0)
+
+# Count occurrences of each artist in playlists
+artist_counts = sp.groupby('artist(s)_name')[platforms].sum().reset_index()
+
+# Sum the occurrences across all platforms
+artist_counts['Total'] = artist_counts[platforms].sum(axis=1)
+
+# Get the top artists by total occurrences
+top_artists = artist_counts.sort_values(by='Total', ascending=False).head(10)
+
+# Create a new DataFrame for plotting
+top_artist_names = top_artists['artist(s)_name'].tolist()
+top_artist_appearances = sp[sp['artist(s)_name'].isin(top_artist_names)][['artist(s)_name'] + platforms]
+top_artist_appearances = top_artist_appearances.groupby('artist(s)_name').sum().reset_index()
+
+# Melt the DataFrame for Seaborn compatibility
+melted = top_artist_appearances.melt(id_vars='artist(s)_name', value_vars=platforms, var_name='Platform', value_name='Appearances')
+
+# Sort the melted DataFrame by total appearances in descending order
+melted['Total'] = melted.groupby('artist(s)_name')['Appearances'].transform('sum')
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Create the horizontal stacked bar plot
+plt.figure(figsize=(10, 6))
+sns.barplot(data=melted, x='Appearances', y='artist(s)_name', hue='Platform', palette='coolwarm', orient='h')
+
+# Customize the plot
+plt.title("Playlist Appearances of Top 10 Artists", fontsize=16)
+plt.xlabel('Number of Appearances', fontsize=12)
+plt.ylabel('Artists', fontsize=12)
+plt.legend(title='Platforms')
+plt.tight_layout()
+plt.show()
+```
+### Chart Appearances of Top 10 Songs
+
+![image](https://github.com/user-attachments/assets/6c6f1049-b26b-4a9d-afc7-5bd2d42ac16e)
+> Lorem et ipsum Lorem et ipsum Lorem et ipsum Lorem et ipsum 
+
+##### Syntax: 
+```ruby
+# Rename the columns for clarity
+sp.rename(columns={
+    'in_spotify_charts': 'Spotify',
+    'in_apple_charts': 'Apple Music',
+    'in_deezer_charts': 'Deezer'
+}, inplace=True)
+
+# Define the new columns for the charts
+charts = ['Spotify', 'Apple Music', 'Deezer']
+
+# Convert the specified columns to numeric, with non-numeric values converted to NaN and filled with 0
+sp[charts] = sp[charts].apply(pd.to_numeric, errors='coerce').fillna(0)
+
+# Count the number of occurrences of each artist in the charts
+artist_counts = sp['artist(s)_name'].value_counts().reset_index()
+artist_counts.columns = ['Artist', 'Occurrences']
+
+# Sum the appearances of the top artists in the charts
+top_artists = artist_counts.head(10)  # Top 10 artists
+
+# Create a DataFrame for the stacked bar plot of top artists
+top_artists_appearances = sp[sp['artist(s)_name'].isin(top_artists['Artist'])][['artist(s)_name'] + charts]
+top_artists_appearances = top_artists_appearances.groupby('artist(s)_name').sum().reset_index()
+
+# Melt the DataFrame for Seaborn compatibility
+melted = top_artists_appearances.melt(id_vars='artist(s)_name', value_vars=charts, var_name='Platform', value_name='Appearances')
+
+# Set Seaborn style
+sns.set(style="whitegrid")
+
+# Create the horizontal stacked bar plot
+plt.figure(figsize=(10, 6))
+sns.barplot(data=melted, x='Appearances', y='artist(s)_name', hue='Platform', palette='coolwarm', orient='h')
+
+# Customize the plot
+plt.title("Chart Appearances of Top 10 Artists")
+plt.xlabel('Number of Appearances')
+plt.ylabel('Artists')
+plt.legend(title='Charts')
+plt.tight_layout()
+plt.show()
+```
+***
 ### References
 * M, R. (2021, January 15). What Is Pyplot In Matplotlib. ActiveState. https://www.activestate.com/resources/quick-reads/what-is-pyplot-in-matplotlib/
 * Electronics Engineering Department (September 2024). Data Wrangling and Data Visualization, PowerPoint Slides
