@@ -118,7 +118,7 @@ plt.show()
 ### Top 10 Artists by Total Streams
 
 ![Screen Shot 2024-11-06 at 2 39 16 PM](https://github.com/user-attachments/assets/da03db3d-7261-45cb-bd7e-ab1fe906f650)
-> <p align="justify"> The graph displays the total streams for the top 10 artists, ranked in descending order. The artists are listed along the x-axis, and their respective total streams are represented by the height of the bars on the y-axis. The bars are color-coded, with a gradient from blue to red, likely indicating a ranking or classification of the artists. </p>
+> <p align="justify"> The graph displays the total streams for the top 10 artists, ranked in descending order. The artists are listed along the x-axis, and their respective total streams are represented by the height of the bars on the y-axis. The Weeknd leads with the highest number of streams, followed closely by Taylor Swift and Ed Sheeran. Harry Styles, Bad Bunny, Olivia Rodrigo, Eminem, Bruno Mars, Arctic Monkeys, and Imagine Dragons round out the top 10 artists. </p>
 ##### Syntax: 
 ```ruby
 # Top 10 songs by streams 
@@ -452,7 +452,7 @@ print(track_counts)
 ### Playlist Appearances of Top 5 Songs
 
 ![Screen Shot 2024-11-06 at 5 00 13 PM](https://github.com/user-attachments/assets/07b43f5c-352f-43ef-8366-0bf503cdc379)
-> <p align="justify"> This bar chart displays the playlist appearances of the top 5 songs on Spotify, Apple Music, and Deezer. Each song has a bar showing its distribution across these platforms, with the x-axis representing the number of appearances. “Blinding Lights” has the highest appearances, especially on Spotify (blue). “Shape of You” and “Dance Monkey” also have high numbers but fall behind “Blinding Lights.” “Someone You Loved” and “Sunflower” appear less frequently, with Deezer (red) showing minimal appearances across all songs. This chart highlights each song’s popularity across the platforms in terms of playlist frequency. </p>
+> <p align="justify"> This bar chart displays the playlist appearances of the top 5 songs on Spotify, Apple Music, and Deezer. Each song has a bar showing its distribution across these platforms, with the x-axis representing the number of appearances. “Blinding Lights” has the highest appearances, especially on Spotify (blue). “Shape of You” and “Dance Monkey” also have high numbers but fall behind “Blinding Lights.” “Someone You Loved” and “Sunflower” appear less frequently, with Deezer (orange) showing minimal appearances across all songs. This chart highlights each song’s popularity across the platforms in terms of playlist frequency. </p>
 
 
 
@@ -625,7 +625,7 @@ plt.show()
 ### Total Streams Per Key
 
 ![image](https://github.com/user-attachments/assets/18995d66-14ce-44d8-b6c7-3d5984ef2d5b)
-> <p align="justify"> The bar chart shows the total number of streams for songs in different keys. The key of C# has the highest number of streams, followed by nan, G, and G#. The key of D# has the lowest number of streams. </p>
+> <p align="justify"> The bar chart shows the total number of streams for songs in different keys. The key of C# has the highest number of streams, followed by nan, G, and G#. The key of D# has the lowest number of streams. The NaN label refers to the missing, undefined key values. </p>
 
 ##### Syntax: 
 ```ruby
@@ -653,7 +653,7 @@ plt.show()
 ### Playlist Appearances of Top 10 Artists
 
 ![image](https://github.com/user-attachments/assets/4177cb46-34d4-40eb-ab5d-560ec20b847a)
-> <p align="justify"> This bar chart shows the playlist appearances of the top 10 artists on three streaming platforms: Spotify, Apple Music, and Deezer. Each artist is represented by bars segmented by platform, with the total number of appearances shown on the x-axis. Spotify generally has the highest representation across all artists, especially for artists like The Weeknd and Dr. Dre & Snoop Dogg. Apple Music and Deezer have significantly fewer appearances, indicated by smaller sections in red and brown on each bar. The chart provides a comparative view of each artist’s playlist frequency on each platform. </p>
+> <p align="justify"> This bar chart shows the playlist appearances of the top 10 artists on three streaming platforms: Spotify, Apple Music, and Deezer. Each artist is represented by bars segmented by platform, with the total number of appearances shown on the x-axis. Spotify generally has the highest representation across all artists, especially for artists like The Weeknd and Dr. Dre & Snoop Dogg. Apple Music and Deezer have significantly fewer appearances, indicated by smaller sections in gray and orange on each bar. The chart provides a comparative view of each artist’s playlist frequency on each platform. </p>
 
 ##### Syntax: 
 ```ruby
@@ -708,7 +708,7 @@ plt.show()
 ### Chart Appearances of Top 10 Artists
 
 ![image](https://github.com/user-attachments/assets/6c6f1049-b26b-4a9d-afc7-5bd2d42ac16e)
-> <p align="justify"> This bar chart shows the chart appearances of the top 10 artists on three music streaming platforms: Spotify, Apple Music, and Deezer. Each artist has a bar segmented by platform, with the x-axis representing the number of appearances. Spotify (blue) dominates in appearances for most artists, especially for Bad Bunny and Taylor Swift, who have the highest counts. Apple Music and Deezer have relatively fewer appearances, as indicated by smaller segments in gray and red on each bar. The chart highlights the distribution of each artist’s popularity across the platforms in terms of chart appearances. </p>
+> <p align="justify"> This bar chart shows the chart appearances of the top 10 artists on three music streaming platforms: Spotify, Apple Music, and Deezer. Each artist has a bar segmented by platform, with the x-axis representing the number of appearances. Spotify (blue) dominates in appearances for most artists, especially for Bad Bunny and Taylor Swift, who have the highest counts. Apple Music and Deezer have relatively fewer appearances, as indicated by smaller segments in gray and orange on each bar. The chart highlights the distribution of each artist’s popularity across the platforms in terms of chart appearances. </p>
 
 ##### Syntax: 
 ```ruby
